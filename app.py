@@ -49,19 +49,19 @@ soil_water_content['Baik'] = fuzz.trapmf(
 delta_evaporation['Small'] = fuzz.trapmf(
     delta_evaporation.universe, [0, 0, 1, 3])
 delta_evaporation['MediumD'] = fuzz.trimf(
-    delta_evaporation.universe, [1, 3, 5])
+    delta_evaporation.universe, [1, 3, 4, 5])
 delta_evaporation['Large'] = fuzz.trapmf(
     delta_evaporation.universe, [3, 5, 6, 6])
 
 # sunshine_hour
 sunshine_hour['Short'] = fuzz.trapmf(sunshine_hour.universe, [0, 0, 2, 6])
-sunshine_hour['Medium'] = fuzz.trimf(sunshine_hour.universe, [2, 6, 10])
+sunshine_hour['Medium'] = fuzz.trapmf(sunshine_hour.universe, [2, 6, 7, 10])
 sunshine_hour['Long'] = fuzz.trapmf(sunshine_hour.universe, [6, 10, 12, 12])
 
 
 plant_age['Germination'] = fuzz.trapmf(plant_age.universe, [0, 0, 3, 6])
-plant_age['Tillering'] = fuzz.trimf(plant_age.universe, [3, 6, 9])
-plant_age['Growth'] = fuzz.trimf(plant_age.universe, [6, 9, 12])
+plant_age['Tillering'] = fuzz.trapmf(plant_age.universe, [3, 6, 8, 9])
+plant_age['Growth'] = fuzz.trapmf(plant_age.universe, [6, 9, 10, 12])
 plant_age['Ripening'] = fuzz.trapmf(
     plant_age.universe, [9, 12, 15, 15])
 
@@ -69,9 +69,9 @@ plant_age['Ripening'] = fuzz.trapmf(
 # output ==== membership value
 bobot_penyiraman['Singkat'] = fuzz.trapmf(
     bobot_penyiraman.universe, [0, 0, 15, 30])
-bobot_penyiraman['Lama'] = fuzz.trimf(
+bobot_penyiraman['Lama'] = fuzz.trapmf(
     bobot_penyiraman.universe, [15, 30, 60, 75])
-bobot_penyiraman['SangatLama'] = fuzz.trimf(
+bobot_penyiraman['SangatLama'] = fuzz.trapmf(
     bobot_penyiraman.universe, [60, 75, 90, 100])
 
 #===============================================================================================================================================#
