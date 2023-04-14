@@ -48,7 +48,7 @@ soil_water_content['Baik'] = fuzz.trapmf(
 
 delta_evaporation['Small'] = fuzz.trapmf(
     delta_evaporation.universe, [0, 0, 1, 3])
-delta_evaporation['MediumD'] = fuzz.trimf(
+delta_evaporation['MediumD'] = fuzz.trapmf(
     delta_evaporation.universe, [1, 3, 4, 5])
 delta_evaporation['Large'] = fuzz.trapmf(
     delta_evaporation.universe, [3, 5, 6, 6])
@@ -78,114 +78,222 @@ bobot_penyiraman['SangatLama'] = fuzz.trapmf(
 
 # We define set of rules
 
-rule1 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule2 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule3 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule4 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Singkat '])
-rule5 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule6 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule7 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule8 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule9 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule10 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule11 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule12 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule13 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule14 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule15 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule16 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Singkat '])
-rule17 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule18 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule19 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule20 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule21 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule22 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule23 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule24 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule25 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule26 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule27 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule28 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule29 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule30 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule31 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule32 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule33 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule34 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule35 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' SangatLama '])
-rule36 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Germination'] | plant_age['Ripening']) , bobot_penyiraman[' Lama '])
-rule37 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule38 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule39 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule40 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule41 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule42 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule43 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule44 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule45 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule46 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule47 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule48 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule49 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule50 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule51 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule52 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule53 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule54 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule55 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule56 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule57 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule58 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule59 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule60 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule61 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule62 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule63 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule64 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule65 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule66 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule67 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule68 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Singkat '])
-rule69 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' SangatLama '])
-rule70 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule71 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule72 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Tillering'] ) , bobot_penyiraman[' Lama '])
-rule73 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule74 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule75 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule76 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule77 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule78 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule79 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule80 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule81 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule82 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule83 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule84 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule85 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule86 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule87 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule88 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule89 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule90 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule91 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule92 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule93 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule94 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule95 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule96 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule97 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule98 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule99 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule100 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule101 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule102 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule103 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule104 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
-rule105 = ctrl.Rule( soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule106 = ctrl.Rule( soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule107 = ctrl.Rule( soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Lama '])
-rule108 = ctrl.Rule( soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (plant_age['Growth'] ) , bobot_penyiraman[' Singkat '])
+rule1 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule2 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule3 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule4 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Singkat'])
+rule5 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule6 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule7 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule8 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule9 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule10 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule11 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule12 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule13 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule14 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule15 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule16 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Singkat'])
+rule17 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule18 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule19 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule20 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule21 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule22 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule23 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule24 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule25 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule26 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule27 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule28 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule29 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule30 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule31 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule32 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule33 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule34 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule35 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['SangatLama'])
+rule36 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Germination'] | plant_age['Ripening']), bobot_penyiraman['Lama'])
+rule37 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule38 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule39 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule40 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule41 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium'] &
+                   delta_evaporation['Small'] & (plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule42 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule43 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule44 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule45 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule46 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule47 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule48 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule49 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule50 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule51 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule52 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule53 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium'] &
+                   delta_evaporation['MediumD'] & (plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule54 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule55 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule56 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule57 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule58 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule59 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule60 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule61 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule62 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule63 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule64 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule65 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium'] &
+                   delta_evaporation['Large'] & (plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule66 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule67 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule68 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Singkat'])
+rule69 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['SangatLama'])
+rule70 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule71 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule72 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Tillering']), bobot_penyiraman['Lama'])
+rule73 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule74 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule75 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule76 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule77 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium'] &
+                   delta_evaporation['Small'] & (plant_age['Growth']), bobot_penyiraman['Lama'])
+rule78 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule79 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule80 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule81 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] &
+                   delta_evaporation['Small'] & (plant_age['Growth']), bobot_penyiraman['Lama'])
+rule82 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Lama'])
+rule83 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule84 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Small'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule85 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule86 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule87 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule88 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule89 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium'] &
+                   delta_evaporation['MediumD'] & (plant_age['Growth']), bobot_penyiraman['Lama'])
+rule90 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule91 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule92 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule93 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] &
+                   delta_evaporation['MediumD'] & (plant_age['Growth']), bobot_penyiraman['Lama'])
+rule94 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule95 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule96 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['MediumD'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule97 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Short'] &
+                   delta_evaporation['Large'] & (plant_age['Growth']), bobot_penyiraman['Lama'])
+rule98 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Lama'])
+rule99 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule100 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Short'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule101 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Medium']
+                    & delta_evaporation['Large'] & (plant_age['Growth']), bobot_penyiraman['Lama'])
+rule102 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Lama'])
+rule103 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule104 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Medium'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
+rule105 = ctrl.Rule(soil_water_content['SangatKritis'] & sunshine_hour['Long'] &
+                    delta_evaporation['Large'] & (plant_age['Growth']), bobot_penyiraman['Lama'])
+rule106 = ctrl.Rule(soil_water_content['Kritis'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Lama'])
+rule107 = ctrl.Rule(soil_water_content['KurangBaik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Lama'])
+rule108 = ctrl.Rule(soil_water_content['Baik'] & sunshine_hour['Long'] & delta_evaporation['Large'] & (
+    plant_age['Growth']), bobot_penyiraman['Singkat'])
 
 
 #===============================================================================================================================================#
@@ -203,7 +311,7 @@ water_ctrl1 = ctrl.ControlSystem(
         rule73, rule74, rule75, rule76, rule77, rule78, rule79, rule80, rule81,
         rule82, rule83, rule84, rule85, rule86, rule87, rule88, rule89, rule90,
         rule91, rule92, rule93, rule94, rule95, rule96, rule97, rule98, rule99,
-        rule100, rule101, rule102, rule103, rule104, rule105, rule106, rule107, 
+        rule100, rule101, rule102, rule103, rule104, rule105, rule106, rule107,
         rule108
 
      ])
