@@ -48,7 +48,7 @@ soil_water_content['Baik'] = fuzz.trapmf(
 
 delta_evaporation['Small'] = fuzz.trapmf(
     delta_evaporation.universe, [0, 0, 1, 3])
-delta_evaporation['MediumD'] = fuzz.trimf(
+delta_evaporation['MediumD'] = fuzz.trapmf(
     delta_evaporation.universe, [1, 3, 4, 5])
 delta_evaporation['Large'] = fuzz.trapmf(
     delta_evaporation.universe, [3, 5, 6, 6])
