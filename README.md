@@ -13,3 +13,6 @@ POST : /processjson
 	"plant_age": "14"
 }
 ```
+
+## Deployment
+https://medium.com/geekculture/deploying-flask-application-on-vps-linux-server-using-nginx-a1c4f8ff0010
