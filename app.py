@@ -328,7 +328,7 @@ def processjson():
     soil_water_content_in = request.json['soil_water_content']
     sunshine_hour_in = request.json['sunshine']
     delta_evaporation_in = request.json['evaporation']
-    plant_age_in = request.json['last_water']
+    plant_age_in = request.json['plant_age']
 
     soil_water_content = int(soil_water_content_in)
     sunshine_hour = int(sunshine_hour_in)
@@ -344,7 +344,7 @@ def processjson():
 
     water.compute()
 
-    return jsonify(water.output['bobot_penyiraman'])
+    return jsonify(water.output)
 
 
 if __name__ == '__main__':
