@@ -18,21 +18,21 @@ app = Flask(__name__)
 
 # INPUT
 # soil_water_content from 0 to 100
-soil_water_content = ctrl.Antecedent(np.arange(0, 40, 1), 'soil_water_content')
+soil_water_content = ctrl.Antecedent(np.arange(0, 40, 0.1), 'soil_water_content')
 
 # sun_radiation from 0 to 12
-sunshine_hour = ctrl.Antecedent(np.arange(0, 12, 1), 'sunshine_hour')
+sunshine_hour = ctrl.Antecedent(np.arange(0, 12, 0,1), 'sunshine_hour')
 
 # delta_evaporation from 0 to 6 mm
 delta_evaporation = ctrl.Antecedent(
-    np.arange(0, 6, 1), 'delta_evaporation')
+    np.arange(0, 6, 0.1), 'delta_evaporation')
 
 # plant_age from 0 to 14 days
-plant_age = ctrl.Antecedent(np.arange(0, 14, 1), 'plant_age')
+plant_age = ctrl.Antecedent(np.arange(0, 14, 0.1), 'plant_age')
 
 # OUTPUT
 # Water amount a plant needs
-bobot_penyiraman = ctrl.Consequent(np.arange(0, 120, 1), 'bobot_penyiraman')
+bobot_penyiraman = ctrl.Consequent(np.arange(0, 120, 0.1), 'bobot_penyiraman')
 
 #===============================================================================================================================================#
 
