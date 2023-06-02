@@ -1,16 +1,9 @@
 from flask import Flask, request, jsonify
-
-
-import skfuzzy as fuzz
-from skfuzzy import control as ctrl
-
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from skfuzzy import control as ctrl
 import skfuzzy as fuzz
-
 
 app = Flask(__name__)
 
