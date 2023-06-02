@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+import logging
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,6 +8,13 @@ from skfuzzy import control as ctrl
 import skfuzzy as fuzz
 
 app = Flask(__name__)
+
+# CORS
+CORS(app)
+
+# Logging
+logging.basicConfig(level=logging.INFO)
+logging.getLogger('flask_cors').level = logging.DEBUG
 
 #===============================================================================================================================================#
 
