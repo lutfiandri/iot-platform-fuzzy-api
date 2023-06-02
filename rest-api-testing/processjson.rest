@@ -5,7 +5,5 @@ Content-Type: application/json
 	"soil_water_content" : "23",
 	"sunshine": "12",
 	"evaporation": "3",
-	"plant_age": "14",
-    // Variable backup
-	"last_water": "14"
+	"plant_age": "14"
 }
