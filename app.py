@@ -14,7 +14,7 @@ app = Flask(__name__)
 soil_water_content = ctrl.Antecedent(np.arange(0, 40, 0.1), 'soil_water_content')
 
 # sun_radiation from 0 to 12
-sunshine_hour = ctrl.Antecedent(np.arange(0, 12, 0,1), 'sunshine_hour')
+sunshine_hour = ctrl.Antecedent(np.arange(0, 12, 0.1), 'sunshine_hour')
 
 # delta_evaporation from 0 to 6 mm
 delta_evaporation = ctrl.Antecedent(
