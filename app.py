@@ -238,7 +238,7 @@ def processjson():
 
     water.compute()
 
-    return jsonify(water.output['bobot_penyiraman']), 200
+    return jsonify(water.output), 200
 
 @app.route('/evapotranspiration', methods=['POST'])
 def calc_et():
