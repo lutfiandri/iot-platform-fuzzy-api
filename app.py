@@ -226,20 +226,10 @@ water = ctrl.ControlSystemSimulation(water_ctrl1)
 
 @app.route('/processjson', methods=['POST'])
 def processjson():
-    #===============================================================================================================================================#
-
-    #req_data = request.get_json()
-    soil_water_content_in = request.json['soil_water_content']
-    sunshine_hour_in = request.json['sunshine']
-    delta_evaporation_in = request.json['evaporation']
-    plant_age_in = request.json['plant_age']
-
-    soil_water_content = int(soil_water_content_in)
-    sunshine_hour = int(sunshine_hour_in)
-    delta_evaporation = int(delta_evaporation_in)
-    plant_age = int(plant_age_in)
-
-    # return '{}'.format(soil_water_content+sunshine_hour)
+    soil_water_content = int(request.json['soil_water_content'])
+    sunshine_hour = int(request.json['sunshine'])
+    delta_evaporation = int(request.json['evaporation'])
+    plant_age = int(request.json['plant_age'])
 
     water.input['soil_water_content'] = soil_water_content
     water.input['sunshine_hour'] = sunshine_hour
@@ -248,7 +238,7 @@ def processjson():
 
     water.compute()
 
-    return jsonify(water.output)
+    return jsonify(water.output['bobot_penyiraman']), 200
 
 @app.route('/evapotranspiration', methods=['POST'])
 def calc_et():
