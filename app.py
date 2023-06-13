@@ -241,7 +241,7 @@ def processjson():
     return jsonify(water.output), 200
 
 @app.route('/evapotranspiration', methods=['POST'])
-def calc_et():
+def calculate_evapotranspiration():
     constant_pressure = 1.013 * (10 ** -3)
 
     # Required
@@ -254,12 +254,12 @@ def calc_et():
     latitude            = float(request.json['latitude'])
     anemometer_height   = float(request.json['anemometer_height'])
 
-    # Optional
+    # Optional, but strongly inputted
     wind_speed      = float(request.json['wind_speed']) if request.json.get('wind_speed') is not None else None
     sunlight_hours  = float(request.json['sunlight_hours']) if request.json.get('sunlight_hours') is not None else None
     radiation       = float(request.json['radiation']) if request.json.get('radiation') is not None else None
 
-    # Super Optional
+    # Optional
     temp_dry        = float(request.json['temp_dry']) if request.json.get('temp_dry') is not None else None
     temp_wet        = float(request.json['temp_wet']) if request.json.get('temp_wet') is not None else None
     temp_dew        = float(request.json['temp_dew']) if request.json.get('temp_dew') is not None else None
