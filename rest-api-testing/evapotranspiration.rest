@@ -1,0 +1,24 @@
+POST http://127.0.0.1:5000/evapotranspiration
+Content-Type: application/json
+
+{
+    "date"    : "2021-11-15",
+	"temp_min": 17.5,
+    "temp_max": 28.7,
+    "altitude": 546,
+    "latitude": 17.88,
+    "anemometer_height": 2,
+    
+    // Optional but strongly suggested
+    "wind_speed": 2.0,
+    "sunlight_hours": 6.1,
+    "radiation":10,
+
+    // Optional
+    "temp_dew":15,
+    "temp_wet":10,
+    "temp_dry":27,
+    "rh_min":10,
+    "rh_max":27,
+    "rh_mean":15
+}
