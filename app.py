@@ -226,10 +226,10 @@ water = ctrl.ControlSystemSimulation(water_ctrl1)
 
 @app.route('/processjson', methods=['POST'])
 def processjson():
-    soil_water_content = int(request.json['soil_water_content'])
-    sunshine_hour = int(request.json['sunshine'])
-    delta_evaporation = int(request.json['evaporation'])
-    plant_age = int(request.json['plant_age'])
+    soil_water_content = float(request.json['soil_water_content'])
+    sunshine_hour = float(request.json['sunshine'])
+    delta_evaporation = float(request.json['evaporation'])
+    plant_age = float(request.json['plant_age'])
 
     water.input['soil_water_content'] = soil_water_content
     water.input['sunshine_hour'] = sunshine_hour
