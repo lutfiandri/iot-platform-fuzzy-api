@@ -167,6 +167,12 @@ def calculate_evapotranspiration():
 
     return jsonify(output), 200
 
+@app.route('/latest-config', methods=['GET'])
+def getparams(params=None):
+    with open("params_config.json", "r") as file:
+        params = json.load(file)
+        return jsonify({"params": params}), 200
+
 with open("params_config.json", "r") as file:
     params = json.load(file)
     processparams(params)
