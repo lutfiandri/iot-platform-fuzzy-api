@@ -30,21 +30,16 @@ simulation = None
 
 @app.route('/processjson', methods=['POST'])
 def processjson():
-    soil_water_content = float(request.json['soil_water_content'])
-    sunshine_hour = float(request.json['sunshine'])
-    delta_evaporation = float(request.json['evaporation'])
-    plant_age = float(request.json['plant_age'])
 
-    simulation.input['SoilWaterContent'] = soil_water_content
-    simulation.input['SunshineHour'] = sunshine_hour
-    simulation.input['DeltaEvaporation'] = delta_evaporation
-    simulation.input['PlantAge'] = plant_age
+    for key, value in request.json.items():
+        print(key, value)
+        simulation.input[key] = float(value)
 
-    print(">>>>>>>>>>>>>>>>>>>>>>>>")
-    print(simulation)
-    print(type(simulation))
-    print(simulation.input)
-    print(">>>>>>>>>>>>>>>>>>>>>>>>")
+    # print(">>>>>>>>>>>>>>>>>>>>>>>>")
+    # print(simulation)
+    # print(type(simulation))
+    # print(simulation.input)
+    # print(">>>>>>>>>>>>>>>>>>>>>>>>")
 
     simulation.compute()
 
@@ -70,7 +65,6 @@ def processparams(params=None):
     # Antecedents, Consequents, and Trapmf
     antecedents = []
     for i in params["input"]:
-        print(i["param_name"])
         antecedents.append(ctrl.Antecedent(np.arange(*i["universe"]), i["param_name"]))
         for key, value in i["membership"].items():
             antecedents[-1][key] = fuzz.trapmf(antecedents[-1].universe, value)
