@@ -94,6 +94,9 @@ POST : /config-update
     }
 }
 ```
+- Universe including [min, max, precision]
+- Rule will have same count as combination of input's memberships count
+- Membership including 4 trapezoidal x-axis point
 
 ## Deployment
 https://medium.com/geekculture/deploying-flask-application-on-vps-linux-server-using-nginx-a1c4f8ff0010
