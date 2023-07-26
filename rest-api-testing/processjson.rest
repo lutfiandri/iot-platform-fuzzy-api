@@ -2,8 +2,14 @@ POST http://127.0.0.1:5000/processjson
 Content-Type: application/json
 
 {
+	// Normal Input
 	"soil_water_content" : "23",
 	"sunshine": "12",
 	"evaporation": "3",
-	"plant_age": "14"
+	"plant_age": "14",
+	// Custom Input
+	"SoilWaterContent" : "23",
+	"SunshineHour": "12",
+	"DeltaEvaporation": "3",
+	"PlantAge": "14"
 }
