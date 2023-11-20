@@ -47,6 +47,13 @@ def transform_input(input: list) -> list:
     result = [transform_input_item(x) for x in input]
     return result
 
+def transform_output(output: dict) -> list:
+    result = [{
+        'param_name': key,
+        'value': output[key]
+    } for key in output.keys()]
+    return result
+
 # transform config
 def transform_config_item(item: dict) -> dict:
     universe = [
@@ -90,10 +97,13 @@ def fuzzy_inference_batch(ctrl_system: ctrl.ControlSystem, input: list):
             simulation.input[key] = float(value)
 
         simulation.compute()
+
+        output = transform_output(simulation.output)
         result = {
             "id": block["id"],
-            "output": simulation.output
+            "output": output
         }
+
         results.append(result) 
 
     return results
