@@ -25,9 +25,9 @@ CORS(app)
 logging.basicConfig(level=logging.INFO)
 logging.getLogger('flask_cors').level = logging.DEBUG
 
-# simulation caching
+# ctrl caching
 # map[str]ctrl.ControlSystem
-# map[config_id]simulation_with_the_config
+# map[config_id]ctrl_system_with_the_config
 ctrl_system_cache = {}
 
 # transform input
