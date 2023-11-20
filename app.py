@@ -25,10 +25,27 @@ CORS(app)
 logging.basicConfig(level=logging.INFO)
 logging.getLogger('flask_cors').level = logging.DEBUG
 
-# # transform input
-# def transform_input(input: dict) -> dict:
-    
+# simulation caching
+# map[str]ctrl.ControlSystem
+# map[config_id]simulation_with_the_config
+ctrl_system_cache = {}
 
+# transform input
+def transform_input_item(item: dict) -> dict:
+    data = {}
+    for d in item['data']:
+        data[d['param_name']] = d['value']
+
+    result = {
+        'id': item['id'],
+        'data': data
+    }
+
+    return result
+
+def transform_input(input: list) -> list:
+    result = [transform_input_item(x) for x in input]
+    return result
 
 # transform config
 def transform_config_item(item: dict) -> dict:
@@ -55,6 +72,7 @@ def transform_config(config: dict) -> dict:
     output = [transform_config_item(x) for x in config['output']]
 
     result = {
+        'id': config['id'],
         'input': input,
         'output': output,
         'rule': config['rule']
@@ -62,15 +80,39 @@ def transform_config(config: dict) -> dict:
 
     return result
 
+# Do fuzzy inference for each block
+def fuzzy_inference_batch(ctrl_system: ctrl.ControlSystem, input: list):
+    results = []
+    for block in input:
+        simulation = ctrl.ControlSystemSimulation(ctrl_system)
+
+        for key, value in block["data"].items():
+            simulation.input[key] = float(value)
+
+        simulation.compute()
+        result = {
+            "id": block["id"],
+            "output": simulation.output
+        }
+        results.append(result) 
+
+    return results
 
 @app.route('/fuzzy', methods=['POST'])
 def inference():
     input = request.json["input"]
     config = request.json["config"]
 
+    input = transform_input(input)
     params = transform_config(config)
 
-    print(params['input'], len(params['rule']))
+    # LOOK FOR CTRL SYSTEM CACHE
+    if params['id'] in ctrl_system_cache:
+        ctrl_system = ctrl_system_cache[params['id']]
+        results = fuzzy_inference_batch(ctrl_system, input)
+        return jsonify({
+            "results": results
+        })
 
     # CREATE FUZZY RULE FROM CONFIG ======================
 
@@ -114,25 +156,11 @@ def inference():
         rule_list.append(rule_buffer)
 
     # CREATE FUZZY CONTROL SYSTEM SIMULATION ===================
-    simulation_ctrl = ctrl.ControlSystem(rule_list)
-
+    ctrl_system = ctrl.ControlSystem(rule_list)
+    ctrl_system_cache[params['id']] = ctrl_system
 
     # FUZZY INFERENCE FOR EACH BLOCK ===========================
-    results = []
-    for block in input:
-        simulation = ctrl.ControlSystemSimulation(simulation_ctrl)
-
-        print(block)
-
-        for key, value in block["data"].items():
-            simulation.input[key] = float(value)
-
-        simulation.compute()
-        result = {
-            "id": block["id"],
-            "output": simulation.output
-        }
-        results.append(result)
+    results = fuzzy_inference_batch(ctrl_system, input)
 
     return jsonify({
         "results": results

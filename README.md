@@ -11,33 +11,70 @@ POST : /fuzzy
   "input": [
     {
       "id": "a",
-      "data": {
-        "SoilWaterContent": "23",
-        "SunshineHour": "12",
-        "DeltaEvaporation": "3",
-        "PlantAge": "14"
-      }
+      "data": [
+        {
+          "param_name": "SoilWaterContent",
+          "value": 23
+        },
+        {
+          "param_name": "SunshineHour",
+          "value": 12
+        },
+        {
+          "param_name": "DeltaEvaporation",
+          "value": 3
+        },
+        {
+          "param_name": "PlantAge",
+          "value": 14
+        }
+      ]
     },
     {
       "id": "b",
-      "data": {
-        "SoilWaterContent": "30",
-        "SunshineHour": "12",
-        "DeltaEvaporation": "3",
-        "PlantAge": "14"
-      }
+      "data": [
+        {
+          "param_name": "SoilWaterContent",
+          "value": 30
+        },
+        {
+          "param_name": "SunshineHour",
+          "value": 12
+        },
+        {
+          "param_name": "DeltaEvaporation",
+          "value": 3
+        },
+        {
+          "param_name": "PlantAge",
+          "value": 14
+        }
+      ]
     },
     {
       "id": "c",
-      "data": {
-        "SoilWaterContent": "23",
-        "SunshineHour": "7",
-        "DeltaEvaporation": "3",
-        "PlantAge": "14"
-      }
+      "data": [
+        {
+          "param_name": "SoilWaterContent",
+          "value": 23
+        },
+        {
+          "param_name": "SunshineHour",
+          "value": 7
+        },
+        {
+          "param_name": "DeltaEvaporation",
+          "value": 3
+        },
+        {
+          "param_name": "PlantAge",
+          "value": 14
+        }
+      ]
     }
   ],
   "config": {
+    "id": "config1",
     "input": [
       {
         "param_name": "SoilWaterContent",
@@ -310,7 +347,7 @@ POST : /fuzzy
 }
 ```
 
-- Universe including [min, max, precision]
+- Universe including {min, max, precision}
 - Rule will have same count as combination of input's memberships count
 - Membership including 4 trapezoidal x-axis point
 
