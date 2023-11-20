@@ -1,19 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import logging
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 from skfuzzy import control as ctrl
-import skfuzzy as fuzz
-import datetime
-from datetime import date
-import math
 from weather_data_processor import *
 from collections import namedtuple
 from functools import reduce
-import itertools
-import json
 
 from utils import *
 
