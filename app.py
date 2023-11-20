@@ -25,11 +25,52 @@ CORS(app)
 logging.basicConfig(level=logging.INFO)
 logging.getLogger('flask_cors').level = logging.DEBUG
 
+# # transform input
+# def transform_input(input: dict) -> dict:
+    
+
+
+# transform config
+def transform_config_item(item: dict) -> dict:
+    universe = [
+        item['universe']['min'],
+        item['universe']['max'],
+        item['universe']['precision'],
+    ]
+
+    membership = {}
+    for m in item['membership']:
+        membership[m['name']] = m['value']
+
+    result = {
+        'param_name': item['param_name'],
+        'universe': universe,
+        'membership': membership,
+    }
+
+    return result
+
+def transform_config(config: dict) -> dict:
+    input = [transform_config_item(x) for x in config['input']]
+    output = [transform_config_item(x) for x in config['output']]
+
+    result = {
+        'input': input,
+        'output': output,
+        'rule': config['rule']
+    }
+
+    return result
+
 
 @app.route('/fuzzy', methods=['POST'])
 def inference():
     input = request.json["input"]
-    params = request.json["config"]
+    config = request.json["config"]
+
+    params = transform_config(config)
+
+    print(params['input'], len(params['rule']))
 
     # CREATE FUZZY RULE FROM CONFIG ======================
 
